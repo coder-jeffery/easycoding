@@ -1,2 +1,2 @@
 # easycoding
-userauth 1.0
+userauth 1.0.1
