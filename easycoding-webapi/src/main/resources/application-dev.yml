@@ -1,0 +1,12 @@
+server:
+  port: 9092
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://rm-xxxx.mysql.rds.aliyuncs.com:3306/databasename
+    username: username
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+
+

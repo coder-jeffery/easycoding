@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="easycoding" />
+        <module name="easycoding-web" />
+        <module name="easycoding-webapi" />
+        <module name="eureka-consumer" />
+        <module name="eureka-producer" />
+        <module name="eureka-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="easycoding" options="-parameters" />
+      <module name="easycoding-web" options="-parameters" />
+      <module name="easycoding-webapi" options="-parameters" />
+      <module name="eureka-consumer" options="-parameters" />
+      <module name="eureka-producer" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+    </option>
+  </component>
+</project>

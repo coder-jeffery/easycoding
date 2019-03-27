@@ -1,0 +1,65 @@
+<configuration scan="true" scanPeriod="10 seconds">
+    <contextName>logback</contextName>
+    <property name="LOG_PATH" value="/var/log"/>
+
+    <appender name="INFO_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/userauth.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/userauth-%d{yyyyMMdd}-%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}
+                -%msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="ERROR_FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>${LOG_PATH}/userauth-error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/userauth-error-%d{yyyyMMdd}-%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>2</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}
+                -%msg%n
+
+            </Pattern>
+        </layout>
+    </appender>
+    <!-- 控制台输出 -->
+    <!-- <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+         <layout name="StandardFormat" class="ch.qos.logback.classic.PatternLayout">
+             <pattern>%-20(%d{yyyyMMdd_HH:mm:ss.SSS} [%logger][%thread] [%-4relative])
+                 [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n
+             </pattern>
+         </layout>
+     </appender>-->
+
+
+    <!--<logger name="com.videojj" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>-->
+
+    <root level="INFO">
+        <!--<appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+
+</configuration>
