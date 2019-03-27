@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/easycoding-webapi/pom.xml" />
         <option value="$PROJECT_DIR$/easycoding-web/pom.xml" />
+        <option value="$PROJECT_DIR$/easycoding-rpc/pom.xml" />
+        <option value="$PROJECT_DIR$/easycoding-common/pom.xml" />
       </list>
     </option>
   </component>
