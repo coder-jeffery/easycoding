@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
+
+
+
 @Api(description = "EASY SYSTEM 1.0v")
 @RestController
 @RequestMapping("/easy")
@@ -30,6 +33,12 @@ public class testController {
     private ConfigurableEnvironment env;
 
 
+    /**
+     *
+     * author Jeffery
+     * date 2019.05.07
+     * @return
+     */
     @ApiOperation(value = "测试接口:index",notes="测试接口:index")
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(){
