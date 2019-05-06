@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @FeignClient(name= "eureka-client")
+
 public interface HelloRemote {
 
 

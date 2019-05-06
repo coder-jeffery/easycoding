@@ -1,12 +1,18 @@
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application
+
+
 server:
-  port: 9092
+  port: 8081
 
 
-spring:
-  datasource:
-    url: jdbc:mysql://rm-xxxx.mysql.rds.aliyuncs.com:3306/databasename
-    username: username
-    password: password
-    driver-class-name: com.mysql.jdbc.Driver
+#spring:
+#  datasource:
+#    url: jdbc:mysql://rm-2zeup629529wxnv4o.mysql.rds.aliyuncs.com:3306/videoos
+#    username: videojj
+#    password: test981&Myjsy
+#    driver-class-name: com.mysql.jdbc.Driver
 
 

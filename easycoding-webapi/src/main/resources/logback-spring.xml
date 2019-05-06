@@ -1,43 +1,12 @@
 <configuration scan="true" scanPeriod="10 seconds">
     <contextName>logback</contextName>
-
-    <!-- 定义日志的根目录 -->
     <property name="LOG_PATH" value="/var/log"/>
-
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoder的默认实现类是ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="DEBUG_FILE"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
-        </filter>
-        <File>${LOG_PATH}/easycoding-webapi-debug.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/easycoding-webapi-debug-%d{yyyyMMdd}-%i.log
-            </fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>500MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>2</maxHistory>
-        </rollingPolicy>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}
-                -%msg%n
-            </Pattern>
-        </layout>
-    </appender>
 
     <appender name="INFO_FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/easycoding-webapi.log</File>
+        <File>${LOG_PATH}/easycodingwebapi.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/easycoding-webapi-%d{yyyyMMdd}-%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/easycodingwebapi-%d{yyyyMMdd}-%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>500MB</maxFileSize>
@@ -56,9 +25,9 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <File>${LOG_PATH}/easycoding-web-error.log</File>
+        <File>${LOG_PATH}/easycodingwebapi-error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/easycoding-webapi-error-%d{yyyyMMdd}-%i.log
+            <fileNamePattern>${LOG_PATH}/easycodingwebapi-error-%d{yyyyMMdd}-%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -69,19 +38,120 @@
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}
                 -%msg%n
+
             </Pattern>
         </layout>
     </appender>
+    <!-- 控制台输出 -->
+    <!-- <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+         <layout name="StandardFormat" class="ch.qos.logback.classic.PatternLayout">
+             <pattern>%-20(%d{yyyyMMdd_HH:mm:ss.SSS} [%logger][%thread] [%-4relative])
+                 [%X{hostName} %X{requestId} %X{processId} %X{service.timing} ][%level] %msg%n
+             </pattern>
+         </layout>
+     </appender>-->
 
-    <logger name="org.springframework.scheduling">
-        <level value="info" />
-    </logger>
 
-    <root level="DEBUG">
-        <appender-ref ref="DEBUG_FILE" />
-        <appender-ref ref="INFO_FILE" />
-        <appender-ref ref="ERROR_FILE" />
-        <appender-ref ref="STDOUT" />
+    <!--<logger name="com.videojj" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>-->
+
+    <root level="INFO">
+        <!--<appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
     </root>
 
 </configuration>
+
+
+
+
+
+<!--<configuration scan="true" scanPeriod="10 seconds">-->
+    <!--<contextName>logback</contextName>-->
+
+    <!--&lt;!&ndash; 定义日志的根目录 &ndash;&gt;-->
+    <!--<property name="LOG_PATH" value="/var/log"/>-->
+
+    <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+        <!--&lt;!&ndash; encoder的默认实现类是ch.qos.logback.classic.encoder.PatternLayoutEncoder &ndash;&gt;-->
+        <!--<encoder>-->
+            <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <!--<appender name="DEBUG_FILE"-->
+              <!--class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>DEBUG</level>-->
+        <!--</filter>-->
+        <!--<File>${LOG_PATH}/easycoding-webapi-debug.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_PATH}/easycoding-webapi-debug-%d{yyyyMMdd}-%i.log-->
+            <!--</fileNamePattern>-->
+            <!--<timeBasedFileNamingAndTriggeringPolicy-->
+                    <!--class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+                <!--<maxFileSize>500MB</maxFileSize>-->
+            <!--</timeBasedFileNamingAndTriggeringPolicy>-->
+            <!--<maxHistory>2</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+            <!--<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-->
+                <!-- -%msg%n-->
+            <!--</Pattern>-->
+        <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="INFO_FILE"-->
+              <!--class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<File>${LOG_PATH}/easycoding-webapi.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_PATH}/easycoding-webapi-%d{yyyyMMdd}-%i.log</fileNamePattern>-->
+            <!--<timeBasedFileNamingAndTriggeringPolicy-->
+                    <!--class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+                <!--<maxFileSize>500MB</maxFileSize>-->
+            <!--</timeBasedFileNamingAndTriggeringPolicy>-->
+            <!--<maxHistory>2</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+            <!--<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-->
+                <!-- -%msg%n-->
+            <!--</Pattern>-->
+        <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<appender name="ERROR_FILE"-->
+              <!--class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>ERROR</level>-->
+        <!--</filter>-->
+        <!--<File>${LOG_PATH}/easycoding-web-error.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_PATH}/easycoding-webapi-error-%d{yyyyMMdd}-%i.log-->
+            <!--</fileNamePattern>-->
+            <!--<timeBasedFileNamingAndTriggeringPolicy-->
+                    <!--class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+                <!--<maxFileSize>500MB</maxFileSize>-->
+            <!--</timeBasedFileNamingAndTriggeringPolicy>-->
+            <!--<maxHistory>2</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+            <!--<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-->
+                <!-- -%msg%n-->
+            <!--</Pattern>-->
+        <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<logger name="org.springframework.scheduling">-->
+        <!--<level value="info" />-->
+    <!--</logger>-->
+
+    <!--<root level="DEBUG">-->
+        <!--<appender-ref ref="DEBUG_FILE" />-->
+        <!--<appender-ref ref="INFO_FILE" />-->
+        <!--<appender-ref ref="ERROR_FILE" />-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</root>-->
+
+<!--</configuration>-->
